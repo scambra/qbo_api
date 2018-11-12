@@ -7,6 +7,7 @@
 #429 Too Many Requests  API Throttling/ Rate limiting
 #500 Internal Server Error	An error occurred on the server while processing the request.  Resubmit request once; if it persists, contact developer support.
 #503 Service Unavailable	The service is temporarily unavailable.
+#504 GatewayTimeout The service timed out before completing the request.
 # Custom error class for rescuing from all QuickBooks Online errors
 class QboApi
   class Error < StandardError
@@ -42,4 +43,7 @@ class QboApi
 
   # Raised when QuickBooks Online returns the HTTP status code 503
   class ServiceUnavailable < Error; end
+
+  # Raised when QuickBooks Online returns the HTTP status code 504
+  class GatewayTimeout < Error; end
 end
